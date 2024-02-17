@@ -13,7 +13,9 @@ datasource db {
 model Drinks {
   id String @id @default(uuid())
 
-  teor_alcoholic Decimal? @db.Decimal(3, 1)
+  name String
+
+  teor_alcoholic Float?
 
   purchases PurchaseEnd[]
 
@@ -42,7 +44,7 @@ model PurchaseEnd {
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId String
 
-  canceldAt DateTime?
+  canceledAt DateTime?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
