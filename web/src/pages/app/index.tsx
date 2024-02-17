@@ -1,5 +1,5 @@
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
-import { useUser } from "@auth0/nextjs-auth0/client"
+import { useUser } from "@auth0/nextjs-auth0"
 
 export default function HomePage() {
     const { user } = useUser()
@@ -10,7 +10,7 @@ export default function HomePage() {
             <pre>
                 {JSON.stringify(user, null, 2)}
             </pre>
-
+            
             <a href="/api/auth/logout">Logout</a>
         </div>
     )
