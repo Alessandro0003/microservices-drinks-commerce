@@ -1,7 +1,7 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { GqlExecutionContext } from '@nestjs/graphql'
-import { expressjwt as jwt, GetVerificationKey } from 'express-jwt'
+import  jwt from 'express-jwt'
 import { expressJwtSecret } from 'jwks-rsa'
 import { promisify } from 'node:util'
 
@@ -16,11 +16,6 @@ export class AuthorizationGuard implements CanActivate {
   }
   
   async canActivate(context: ExecutionContext ): Promise<boolean>{
-    // const httpContext = context.switchToHttp()
-
-    // const req = httpContext.getRequest()
-    // const res = httpContext.getResponse()
-
     const { req, res } = GqlExecutionContext.create(context).getContext() 
 
     const checkJWT = promisify(
@@ -30,7 +25,7 @@ export class AuthorizationGuard implements CanActivate {
           rateLimit: true,
           jwksRequestsPerMinute: 5,
           jwksUri: `${this.AUTH0_DOMAIN}.well-known/jwks.json`
-        }) as GetVerificationKey,
+        }),
         audience: this.AUTH0_AUDIENCE,
         issuer: this.AUTH0_DOMAIN,
         algorithms: ['RS256']
