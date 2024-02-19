@@ -4,4 +4,7 @@ import { Field, InputType } from '@nestjs/graphql'
 export class CreateCategoryInput {
     @Field()
     description: string
+
+    @Field()
+    title: string
 }

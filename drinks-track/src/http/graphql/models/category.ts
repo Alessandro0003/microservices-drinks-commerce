@@ -9,5 +9,8 @@ export class Category {
     description: string
 
     @Field()
+    title: string
+
+    @Field()
     slug: string
 }

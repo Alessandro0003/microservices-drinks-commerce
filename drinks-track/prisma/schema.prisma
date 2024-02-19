@@ -13,6 +13,8 @@ datasource db {
 model Drinks {
   id String @id @default(uuid())
 
+  authUserId String? @unique
+
   name String
 
   teor_alcoholic Float?
@@ -27,7 +29,10 @@ model Category {
   id String @id @default(uuid())
 
   description String
-  slug        String @unique
+
+  title String
+
+  slug String @unique
 
   purchaseEndOn PurchaseEnd[]
 

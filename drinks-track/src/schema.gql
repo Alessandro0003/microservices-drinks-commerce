@@ -5,6 +5,7 @@
 type Category {
   id: ID!
   description: String!
+  title: String!
   slug: String!
 }
 
@@ -29,7 +30,18 @@ type Drink {
 }
 
 type Query {
+  me: Drink!
   drinks: [Drink!]!
   category: [Category!]!
+  oneCategory(id: String!): Category!
   purchaseEnd: [PurchaseEnd!]!
+}
+
+type Mutation {
+  createCategory(data: CreateCategoryInput!): Category!
+}
+
+input CreateCategoryInput {
+  description: String!
+  title: String!
 }

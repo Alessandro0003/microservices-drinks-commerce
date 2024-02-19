@@ -10,6 +10,14 @@ export class DrinksService {
         return this.prisma.drinks.findMany()
     }
 
+    getDrinksByAuthUserId(authUserId: string) {
+        return this.prisma.drinks.findUnique({
+            where: {
+                authUserId
+            }
+        })
+    }
+
     getDrinksById(id: string) {
         return this.prisma.drinks.findUnique({
             where: {
