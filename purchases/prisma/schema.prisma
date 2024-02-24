@@ -27,6 +27,10 @@ model Product {
   title String
   slug  String @unique
 
+  description String
+
+  teor_alcoholic Float?
+
   purchasedOn Purchase[]
 
   createdAt DateTime @default(now())

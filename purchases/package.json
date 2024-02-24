@@ -10,7 +10,7 @@
     "dock:start": "docker-compose start",
     "dock:stop": "docker-compose stop",
     "dock:down": "docker-compose down",
-    "prisma": "npx prisma studio",
+    "prisma": "pnpm dlx prisma studio",
     "migrate": "npx prisma migrate dev",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\"",
