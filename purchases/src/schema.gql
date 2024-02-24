@@ -6,6 +6,8 @@ type Product {
   id: ID!
   title: String!
   slug: String!
+  description: String!
+  teor_alcoholic: Float!
 }
 
 type Purchase {
@@ -45,6 +47,8 @@ type Mutation {
 
 input CreateProductInput {
   title: String!
+  teor_alcoholic: Float!
+  description: String!
 }
 
 input CreatePurchaseInput {
