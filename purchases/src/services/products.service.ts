@@ -3,7 +3,9 @@ import slugify from 'slugify'
 import { PrismaService } from '../database/prisma/prisma.service'
 
 interface CreateProductParams {
-    title: string
+    title: string,
+    teor_alcoholic?: GLfloat
+    description: string
 }
 
 @Injectable()
@@ -22,11 +24,13 @@ export class ProductsService {
         })
     }
 
-    async createProduct({ title }: CreateProductParams) {
+
+
+    async createProduct({ title, description, teor_alcoholic }: CreateProductParams) {
         const slug = slugify(title, {
             lower: true
         })
-
+    
         const productWithSameSlug = await this.prisma.product.findUnique({
             where: {
                 slug
@@ -40,7 +44,10 @@ export class ProductsService {
         return this.prisma.product.create({
             data: {
                title,
-               slug 
+               description,
+               teor_alcoholic,
+               slug
+                
             }
         })
     }

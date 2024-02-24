@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql'
+import { Field, Float, ID, ObjectType } from '@nestjs/graphql'
 
 @ObjectType()
 export class Product {
@@ -10,4 +10,10 @@ export class Product {
 
     @Field()
     slug: string
+
+    @Field()
+    description: string
+
+    @Field(() => Float)
+    teor_alcoholic: number
 }
