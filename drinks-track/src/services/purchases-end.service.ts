@@ -1,6 +1,11 @@
 import { Injectable } from '@nestjs/common'
 import { PrismaService } from '../database/prisma/prisma.service'
 
+interface CreatePurchaseEndParams {
+    categoryId: string
+    drinksId: string
+}
+
 interface GetByCategoryAndDrinksIdParams {
     categoryId: string
     drinksId: string
@@ -40,6 +45,16 @@ export class PurchasesEndService {
 
             orderBy: {
                 createdAt: 'desc'
+            }
+        })
+    }
+
+    createPurchaseEnd({ categoryId, drinksId }: CreatePurchaseEndParams) {
+        return this.prisma.purchaseEnd.create({
+            data: {
+                categoryId,
+                drinksId,
+                canceledAt: null
             }
         })
     }

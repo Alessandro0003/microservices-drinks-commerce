@@ -3,8 +3,10 @@ import { PrismaService } from '../database/prisma/prisma.service'
 import slugify from 'slugify'
 
 interface CreateCategoryParams {
-    description: string
     title: string
+    slug?: string
+    description: string
+    
     
 }
 
@@ -24,9 +26,20 @@ export class CategoryService {
         })
     }
 
-    async createCategory({ description, title }: CreateCategoryParams) {
-        const slug = slugify(title, { lower: true })
+    getCategoryBySlug(slug: string) {
+        return this.prisma.category.findUnique({
+            where: {
+                slug
+            }
+        })
+    }
 
+    async createCategory({
+        title,
+        slug = slugify(title, { lower: true }), 
+        description
+        
+    }: CreateCategoryParams) {
         const categoryAlreadyExists = await this.prisma.category.findUnique({
             where: {
                 slug
