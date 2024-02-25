@@ -1,6 +1,6 @@
 import { Controller } from '@nestjs/common'
 import { EventPattern, Payload } from '@nestjs/microservices'
-import { DrinksService } from '../../services/drinks.service'
+import { DrinksCustomerService } from '../../services/drinks-customer.service'
 import { CategoryService } from '../../services/category.service'
 import { PurchasesEndService } from '../../services/purchases-end.service'
 
@@ -24,16 +24,16 @@ export interface PurchaseCreatedPayload {
 
 @Controller()
 export class PurchaseController {
-    constructor(private drinksService: DrinksService, private categoryService: CategoryService, private purchasesEndService: PurchasesEndService) {}
+    constructor(private drinksCustomerService: DrinksCustomerService, private categoryService: CategoryService, private purchasesEndService: PurchasesEndService) {}
 
     @EventPattern('purchases.new-purchase')
     async purchaseCreated(@Payload('value') payload: PurchaseCreatedPayload) { 
-        let drink = await this.drinksService.getDrinksByAuthUserId(
+        let drinkCustomer = await this.drinksCustomerService.getDrinksCustomerByAuthUserId(
             payload.customer.authUserId
         )
 
-        if (!drink) {
-            drink = await this.drinksService.createDrinks({
+        if (!drinkCustomer) {
+            drinkCustomer = await this.drinksCustomerService.createDrinksCustomer({
                 authUserId: payload.customer.authUserId,
                 name: payload.product.title,
                 teor_alcoholic: payload.product.teor_alcoholic,
@@ -53,7 +53,7 @@ export class PurchaseController {
 
         await this.purchasesEndService.createPurchaseEnd({
             categoryId: category.id,
-            drinksId: drink.id
+            drinksCustomerId: drinkCustomer.id
         })
     }
 }

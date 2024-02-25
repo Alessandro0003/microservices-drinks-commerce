@@ -3,14 +3,14 @@ import { PurchaseEnd } from '../models/purchase-end'
 import { PurchasesEndService } from '../../../services/purchases-end.service'
 import { UseGuards } from '@nestjs/common'
 import { AuthorizationGuard } from '../../auth/authorization.guard'
-import { DrinksService } from '../../../services/drinks.service'
+import { DrinksCustomerService } from '../../../services/drinks-customer.service'
 import { CategoryService } from '../../../services/category.service'
 
 @Resolver(() => PurchaseEnd)
 export class PurchasesEndResolver {
     constructor(
         private purchasesEndService: PurchasesEndService,
-        private drinksService: DrinksService,
+        private drinksCustomerService: DrinksCustomerService,
         private categoryService: CategoryService
     ){}
 
@@ -22,7 +22,7 @@ export class PurchasesEndResolver {
 
     @ResolveField()
     drink(@Parent() purchaseEnd: PurchaseEnd) {
-        return this.drinksService.getDrinksById(purchaseEnd.drinksId)
+        return this.drinksCustomerService.getDrinksCustomerById(purchaseEnd.drinksCustomerId)
     }
 
     @ResolveField()

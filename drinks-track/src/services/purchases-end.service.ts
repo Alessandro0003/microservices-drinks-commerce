@@ -3,23 +3,23 @@ import { PrismaService } from '../database/prisma/prisma.service'
 
 interface CreatePurchaseEndParams {
     categoryId: string
-    drinksId: string
+    drinksCustomerId: string
 }
 
-interface GetByCategoryAndDrinksIdParams {
+interface GetByCategoryAndDrinksCustomerIdParams {
     categoryId: string
-    drinksId: string
+    drinksCustomerId: string
 }
 
 @Injectable()
 export class PurchasesEndService {
     constructor(private prisma: PrismaService) {}
 
-    getByCategoryAndDrinksId({ categoryId, drinksId }: GetByCategoryAndDrinksIdParams) {
+    getByCategoryAndDrinksCustomerId({ categoryId, drinksCustomerId }: GetByCategoryAndDrinksCustomerIdParams) {
         return this.prisma.purchaseEnd.findFirst({
             where: {
                 categoryId,
-                drinksId,
+                drinksCustomerId,
                 canceledAt: null
             }
         })
@@ -36,10 +36,10 @@ export class PurchasesEndService {
         })
     }
 
-    listPurchasesEndByDrinks(drinksId: string) {
+    listPurchasesEndByDrinks(drinksCustomerId: string) {
         return this.prisma.purchaseEnd.findMany({
             where: {
-                drinksId,
+                drinksCustomerId,
                 canceledAt: null,
             },
 
@@ -49,11 +49,11 @@ export class PurchasesEndService {
         })
     }
 
-    createPurchaseEnd({ categoryId, drinksId }: CreatePurchaseEndParams) {
+    createPurchaseEnd({ categoryId, drinksCustomerId }: CreatePurchaseEndParams) {
         return this.prisma.purchaseEnd.create({
             data: {
                 categoryId,
-                drinksId,
+                drinksCustomerId,
                 canceledAt: null
             }
         })

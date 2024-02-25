@@ -1,8 +1,8 @@
 import { Field, Float, ID, ObjectType } from '@nestjs/graphql'
 import { PurchaseEnd } from './purchase-end'
 
-@ObjectType()
-export class Drink {
+@ObjectType('UserCustomer')
+export class DrinkCustomer {
     @Field(() => ID)
     id: string
 

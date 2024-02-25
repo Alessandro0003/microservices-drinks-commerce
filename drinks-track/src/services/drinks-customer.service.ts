@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { PrismaService } from '../database/prisma/prisma.service'
 
-interface CreateDrinksParams {
+interface CreateDrinksCustomerParams {
     authUserId: string
     name: string
     teor_alcoholic?: GLfloat
@@ -9,31 +9,31 @@ interface CreateDrinksParams {
 
 
 @Injectable()
-export class DrinksService {
+export class DrinksCustomerService {
     constructor(private prisma: PrismaService) {}
 
-    listAllDrinks() {
-        return this.prisma.drinks.findMany()
+    listAllDrinksCustomer() {
+        return this.prisma.drinksCustomer.findMany()
     }
 
-    getDrinksByAuthUserId(authUserId: string) {
-        return this.prisma.drinks.findUnique({
+    getDrinksCustomerByAuthUserId(authUserId: string) {
+        return this.prisma.drinksCustomer.findUnique({
             where: {
                 authUserId
             }
         })
     }
 
-    getDrinksById(id: string) {
-        return this.prisma.drinks.findUnique({
+    getDrinksCustomerById(id: string) {
+        return this.prisma.drinksCustomer.findUnique({
             where: {
                 id
             }
         })
     }
 
-    createDrinks({ authUserId, name, teor_alcoholic}: CreateDrinksParams) {
-        return this.prisma.drinks.create({
+    createDrinksCustomer({ authUserId, name, teor_alcoholic}: CreateDrinksCustomerParams) {
+        return this.prisma.drinksCustomer.create({
             data: {
                 authUserId,
                 name,

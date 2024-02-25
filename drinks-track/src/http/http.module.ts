@@ -4,10 +4,10 @@ import { DatabaseModule } from '../database/database.module'
 import { GraphQLModule } from '@nestjs/graphql'
 import path from 'node:path'
 import { ApolloDriver } from '@nestjs/apollo'
-import { DrinksResolver } from './graphql/resolvers/drinks.resolver'
+import { DrinksCostumerResolver } from './graphql/resolvers/drinks-customer.resolver'
 import { CategoryResolver } from './graphql/resolvers/category.resolver'
 import { PurchasesEndResolver } from './graphql/resolvers/purchases-end.resolver'
-import { DrinksService } from '../services/drinks.service'
+import { DrinksCustomerService } from '../services/drinks-customer.service'
 import { CategoryService } from '../services/category.service'
 import { PurchasesEndService } from '../services/purchases-end.service'
 
@@ -22,12 +22,12 @@ import { PurchasesEndService } from '../services/purchases-end.service'
     ],
     providers: [
         // Resolvers
-        DrinksResolver,
+        DrinksCostumerResolver,
         CategoryResolver,
         PurchasesEndResolver,
 
         // Services
-        DrinksService,
+        DrinksCustomerService,
         CategoryService,
         PurchasesEndService
     ]

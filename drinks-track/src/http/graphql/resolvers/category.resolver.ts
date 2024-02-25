@@ -5,14 +5,14 @@ import { UnauthorizedException, UseGuards } from '@nestjs/common'
 import { AuthorizationGuard } from '../../auth/authorization.guard'
 import { CreateCategoryInput } from '../inputs/create-category-input'
 import { AuthUser, CurrentUser } from '../../auth/current-user'
-import { DrinksService } from '../../../services/drinks.service'
+import { DrinksCustomerService } from '../../../services/drinks-customer.service'
 import { PurchasesEndService } from '../../../services/purchases-end.service'
 
 @Resolver(() => Category)
 export class CategoryResolver {
     constructor(
         private categoryService: CategoryService,
-        private drinksService: DrinksService,
+        private drinksCustomerService:  DrinksCustomerService,
         private purchasesEndService: PurchasesEndService
     ) {}
 
@@ -25,15 +25,15 @@ export class CategoryResolver {
     @Query(() => Category)
     @UseGuards(AuthorizationGuard)
     async oneCategory(@Args('id') id: string, @CurrentUser() user: AuthUser) {
-        const drink = await this.drinksService.getDrinksByAuthUserId(user.sub)
+        const drinkCustomer = await this.drinksCustomerService.getDrinksCustomerByAuthUserId(user.sub)
 
-        if (!drink) {
+        if (!drinkCustomer) {
             throw new Error('drinks not found')
         }
 
-        const purchaseEnd = await this.purchasesEndService.getByCategoryAndDrinksId({
+        const purchaseEnd = await this.purchasesEndService.getByCategoryAndDrinksCustomerId({
             categoryId: id,
-            drinksId: drink.id
+            drinksCustomerId: drinkCustomer.id
         })
 
         if(!purchaseEnd) {
