@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Drinks {
+model DrinksCustomer {
   id String @id @default(uuid())
 
   authUserId String? @unique
@@ -43,8 +43,8 @@ model Category {
 model PurchaseEnd {
   id String @id @default(uuid())
 
-  drinks   Drinks @relation(fields: [drinksId], references: [id])
-  drinksId String
+  drinksCustomer   DrinksCustomer @relation(fields: [drinksCustomerId], references: [id])
+  drinksCustomerId String
 
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId String
