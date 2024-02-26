@@ -6,8 +6,6 @@ interface CreateCategoryParams {
     title: string
     slug?: string
     description: string
-    
-    
 }
 
 @Injectable()
@@ -34,12 +32,8 @@ export class CategoryService {
         })
     }
 
-    async createCategory({
-        title,
-        slug = slugify(title, { lower: true }), 
-        description
+    async createCategory({ title, slug = slugify(title, { lower: true }), description }: CreateCategoryParams) {
         
-    }: CreateCategoryParams) {
         const categoryAlreadyExists = await this.prisma.category.findUnique({
             where: {
                 slug

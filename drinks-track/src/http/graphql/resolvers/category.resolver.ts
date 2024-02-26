@@ -25,15 +25,15 @@ export class CategoryResolver {
     @Query(() => Category)
     @UseGuards(AuthorizationGuard)
     async oneCategory(@Args('id') id: string, @CurrentUser() user: AuthUser) {
-        const drinkCustomer = await this.drinksCustomerService.getDrinksCustomerByAuthUserId(user.sub)
+        const drinksCustomer = await this.drinksCustomerService.getDrinksCustomerByAuthUserId(user.sub)
 
-        if (!drinkCustomer) {
+        if (!drinksCustomer) {
             throw new Error('drinks not found')
         }
 
         const purchaseEnd = await this.purchasesEndService.getByCategoryAndDrinksCustomerId({
             categoryId: id,
-            drinksCustomerId: drinkCustomer.id
+            drinksCustomerId: drinksCustomer.id
         })
 
         if(!purchaseEnd) {

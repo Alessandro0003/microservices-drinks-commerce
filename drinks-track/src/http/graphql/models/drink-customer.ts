@@ -1,17 +1,16 @@
-import { Field, Float, ID, ObjectType } from '@nestjs/graphql'
+import { Directive, Field, Float, ID, ObjectType } from '@nestjs/graphql'
 import { PurchaseEnd } from './purchase-end'
 
-@ObjectType('UserCustomer')
-export class DrinkCustomer {
-    @Field(() => ID)
+@ObjectType('User')
+@Directive('@extends')
+@Directive('@key(fields: "authUserId")')
+export class DrinksCustomer {
     id: string
 
-    @Field(() => Float)
-    teor_alcoholic: number
-
-    @Field()
-    name: string
+    @Field(() => ID)
+    @Directive('@external')
+    authUserId: string
 
     @Field(() => [PurchaseEnd])
-    purchases: PurchaseEnd[]
+    purchaseEnd: PurchaseEnd[]
 }

@@ -53,8 +53,7 @@ export class PurchasesEndService {
         return this.prisma.purchaseEnd.create({
             data: {
                 categoryId,
-                drinksCustomerId,
-                canceledAt: null
+                drinksCustomerId
             }
         })
     }

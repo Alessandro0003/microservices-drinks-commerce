@@ -6,11 +6,11 @@ export class Category {
     id: string
 
     @Field()
-    description: string
-
-    @Field()
     title: string
 
     @Field()
     slug: string
+
+    @Field()
+    description: string
 }

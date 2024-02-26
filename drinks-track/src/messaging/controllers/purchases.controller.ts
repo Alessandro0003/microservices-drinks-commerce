@@ -13,7 +13,7 @@ export interface Product {
     title: string
     description: string
     slug: string
-    teor_alcoholic: number
+    teor_alcoholic?: number
 }
 
 export interface PurchaseCreatedPayload {
@@ -28,15 +28,13 @@ export class PurchaseController {
 
     @EventPattern('purchases.new-purchase')
     async purchaseCreated(@Payload('value') payload: PurchaseCreatedPayload) { 
-        let drinkCustomer = await this.drinksCustomerService.getDrinksCustomerByAuthUserId(
+        let drinksCustomer = await this.drinksCustomerService.getDrinksCustomerByAuthUserId(
             payload.customer.authUserId
         )
 
-        if (!drinkCustomer) {
-            drinkCustomer = await this.drinksCustomerService.createDrinksCustomer({
+        if (!drinksCustomer) {
+            drinksCustomer = await this.drinksCustomerService.createDrinksCustomer({
                 authUserId: payload.customer.authUserId,
-                name: payload.product.title,
-                teor_alcoholic: payload.product.teor_alcoholic,
             })
         }
 
@@ -53,7 +51,7 @@ export class PurchaseController {
 
         await this.purchasesEndService.createPurchaseEnd({
             categoryId: category.id,
-            drinksCustomerId: drinkCustomer.id
+            drinksCustomerId: drinksCustomer.id
         })
     }
 }

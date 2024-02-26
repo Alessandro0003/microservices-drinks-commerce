@@ -16,11 +16,11 @@ async function bootstrap() {
   })
 
   app.startAllMicroservices().then(() => {
-    console.log('[Drinks-tracks] Microservice running!')
+    console.log('[Drinks-track] Microservice running!')
   })
 
   app.listen(3334).then(() => {
-    console.log('[Drinks-tracks] HTTP server running!')
+    console.log('[Drinks-track] HTTP server running!')
   })
 }
 

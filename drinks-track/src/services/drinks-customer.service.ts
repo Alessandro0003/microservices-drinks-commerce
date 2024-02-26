@@ -3,8 +3,6 @@ import { PrismaService } from '../database/prisma/prisma.service'
 
 interface CreateDrinksCustomerParams {
     authUserId: string
-    name: string
-    teor_alcoholic?: GLfloat
 }
 
 
@@ -32,12 +30,10 @@ export class DrinksCustomerService {
         })
     }
 
-    createDrinksCustomer({ authUserId, name, teor_alcoholic}: CreateDrinksCustomerParams) {
+    createDrinksCustomer({ authUserId }: CreateDrinksCustomerParams) {
         return this.prisma.drinksCustomer.create({
             data: {
-                authUserId,
-                name,
-                teor_alcoholic
+                authUserId
             }
         })
     }

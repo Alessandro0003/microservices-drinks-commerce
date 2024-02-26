@@ -21,7 +21,7 @@ export class PurchasesEndResolver {
     } 
 
     @ResolveField()
-    drink(@Parent() purchaseEnd: PurchaseEnd) {
+    drinksCustomer(@Parent() purchaseEnd: PurchaseEnd) {
         return this.drinksCustomerService.getDrinksCustomerById(purchaseEnd.drinksCustomerId)
     }
 

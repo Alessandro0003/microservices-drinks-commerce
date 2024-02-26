@@ -1,5 +1,5 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql'
-import { DrinkCustomer } from './drink-customer'
+import { DrinksCustomer } from './drink-customer'
 import { Category } from './category'
 
 @ObjectType()
@@ -7,8 +7,8 @@ export class PurchaseEnd {
     @Field(() => ID)
     id: string
 
-    @Field(() => DrinkCustomer)
-    drink: DrinkCustomer
+    @Field(() => DrinksCustomer)
+    drinksCustomer: DrinksCustomer
     drinksCustomerId: string
 
     @Field(() => Category)
