@@ -25,7 +25,7 @@ export class CustomersResolver {
     }
 
     @ResolveReference()
-    resolverReference(reference: { authUserId: string }) {
+    resolveReference(reference: { authUserId: string }) {
         return this.customersService.getCustomerByAuthUserId(reference.authUserId)
     }
 }

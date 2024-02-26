@@ -20,6 +20,7 @@ import { MessagingModule } from '../messaging/messaging.module'
         GraphQLModule.forRoot<ApolloFederationDriverConfig>({
             driver: ApolloFederationDriver,
             autoSchemaFile: path.resolve(process.cwd(), 'src/schema.gql')
+            
         })
     ],
     providers: [

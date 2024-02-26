@@ -15,5 +15,5 @@ export class Product {
     description: string
 
     @Field(() => Float)
-    teor_alcoholic: number
+    teor_alcoholic?: number
 }

@@ -4,7 +4,7 @@ import { PrismaService } from '../database/prisma/prisma.service'
 
 interface CreateProductParams {
     title: string,
-    teor_alcoholic?: GLfloat
+    teor_alcoholic?: number
     description: string
 }
 
@@ -27,9 +27,7 @@ export class ProductsService {
 
 
     async createProduct({ title, description, teor_alcoholic }: CreateProductParams) {
-        const slug = slugify(title, {
-            lower: true
-        })
+        const slug = slugify(title, { lower: true })
     
         const productWithSameSlug = await this.prisma.product.findUnique({
             where: {
@@ -44,10 +42,9 @@ export class ProductsService {
         return this.prisma.product.create({
             data: {
                title,
+               slug,
                description,
-               teor_alcoholic,
-               slug
-                
+               teor_alcoholic            
             }
         })
     }
