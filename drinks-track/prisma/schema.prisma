@@ -15,11 +15,7 @@ model DrinksCustomer {
 
   authUserId String? @unique
 
-  name String
-
-  teor_alcoholic Float?
-
-  purchases PurchaseEnd[]
+  purchaseEnd PurchaseEnd[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
@@ -43,11 +39,11 @@ model Category {
 model PurchaseEnd {
   id String @id @default(uuid())
 
-  drinksCustomer   DrinksCustomer @relation(fields: [drinksCustomerId], references: [id])
-  drinksCustomerId String
-
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId String
+
+  drinksCustomer   DrinksCustomer @relation(fields: [drinksCustomerId], references: [id])
+  drinksCustomerId String
 
   canceledAt DateTime?
 

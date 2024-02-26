@@ -2,16 +2,26 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+directive @key(fields: String!) on OBJECT | INTERFACE
+
+directive @extends on OBJECT | INTERFACE
+
+directive @external on OBJECT | FIELD_DEFINITION
+
+directive @requires(fields: String!) on FIELD_DEFINITION
+
+directive @provides(fields: String!) on FIELD_DEFINITION
+
 type Category {
   id: ID!
-  description: String!
   title: String!
   slug: String!
+  description: String!
 }
 
 type PurchaseEnd {
   id: ID!
-  drink: UserCustomer!
+  drinksCustomer: User!
   category: Category!
   canceledAt: DateTime
   createdAt: DateTime!
@@ -22,16 +32,13 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
-type UserCustomer {
-  id: ID!
-  teor_alcoholic: Float!
-  name: String!
-  purchases: [PurchaseEnd!]!
+type User {
+  authUserId: ID!
+  purchaseEnd: [PurchaseEnd!]!
 }
 
 type Query {
-  me: UserCustomer!
-  drinksCostumer: [UserCustomer!]!
+  drinksCostumer: [User!]!
   category: [Category!]!
   oneCategory(id: String!): Category!
   purchaseEnd: [PurchaseEnd!]!
