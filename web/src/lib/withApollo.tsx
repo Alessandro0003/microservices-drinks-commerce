@@ -3,7 +3,17 @@ import { GetServerSidePropsContext, NextPage } from 'next'
 
 export type ApolloClientContext = GetServerSidePropsContext
 
-export function getApolloClient(ssrCache?: NormalizedCacheObject) {
+export const withApollo = (Component: NextPage) => {
+    return function Provider(props: any ) {
+        return (
+            <ApolloProvider client={getApolloClient(undefined, props.apolloState)}>
+                <Component {...props} />
+            </ApolloProvider>
+        )
+    }
+}
+
+export function getApolloClient(ctx?: ApolloClientContext ,ssrCache?: NormalizedCacheObject) {
     const httpLink = createHttpLink({
         uri: 'http://localhost:3332/graphql',
         fetch,
@@ -17,15 +27,7 @@ export function getApolloClient(ssrCache?: NormalizedCacheObject) {
     })  
 }
 
-export const withApollo = (Component: NextPage) => {
-    return function Provider(props: any ) {
-        return (
-            <ApolloProvider client={getApolloClient(props.apolloState)}>
-                <Component {...props} />
-            </ApolloProvider>
-        )
-    }
-}
+
 
 
 
