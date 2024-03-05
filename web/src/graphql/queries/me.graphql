@@ -1,5 +1,14 @@
 query Me {
     me {
-        authUserId
+       purchaseEnd {
+            id
+            createdAt
+
+            category {
+                description
+                title
+                slug
+            }
+       }
     }
 } 
