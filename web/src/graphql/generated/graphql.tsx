@@ -122,7 +122,7 @@ export type User = {
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MeQuery = { __typename?: 'Query', me: { __typename?: 'User', authUserId: string } };
+export type MeQuery = { __typename?: 'Query', me: { __typename?: 'User', purchaseEnd: Array<{ __typename?: 'PurchaseEnd', id: string, createdAt: any, category: { __typename?: 'Category', description: string, title: string, slug: string } }> } };
 
 export type GetProductsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -133,7 +133,15 @@ export type GetProductsQuery = { __typename?: 'Query', products: Array<{ __typen
 export const MeDocument = gql`
     query Me {
   me {
-    authUserId
+    purchaseEnd {
+      id
+      createdAt
+      category {
+        description
+        title
+        slug
+      }
+    }
   }
 }
     `;
