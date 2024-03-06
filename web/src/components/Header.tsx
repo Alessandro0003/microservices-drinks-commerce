@@ -83,54 +83,70 @@ export function Header() {
         leaveFrom="opacity-100 scale-100"
         leaveTo="opacity-0 scale-95"
       >
-        <Popover.Panel focus className="absolute top-0 inset-x-0 p-2 transition transform origin-top md:hidden">
-          <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
-            <div className="px-5 pt-4 flex items-center justify-between">
-              <div>
-                <img
-                  className="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/workflow-mark-teal-500-cyan-600.svg"
-                  alt=""
-                />
+        
+          <Popover.Panel focus className="absolute top-0 inset-x-0 p-2 transition transform origin-top md:hidden">
+          
+            <div className="rounded-lg shadow-md bg-black ring-1 ring-white ring-opacity-5 overflow-hidden">
+              <div className="px-5 pt-4 flex items-center justify-between">
+                <div>
+                  <img
+                    className="h-8 w-auto"
+                    src="https://i.pinimg.com/564x/14/d3/db/14d3dbbe18deac2df9f9d25277befde4.jpg"
+                    alt=""
+                  />
+                </div>
+                <div className="-mr-2">
+                  <Popover.Button className=" rounded-md p-2 inline-flex items-center justify-center text-violet-500">
+                    <span className="sr-only">Close menu</span>
+                    <XCircleIcon className="h-6 w-6" aria-hidden="true" />
+                  </Popover.Button>
+                </div>
               </div>
-              <div className="-mr-2">
-                <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-600">
-                  <span className="sr-only">Close menu</span>
-                  <XCircleIcon className="h-6 w-6" aria-hidden="true" />
-                </Popover.Button>
+              <div className="pt-5 pb-6">
+              
+                  <div className="px-2 space-y-1">
+                    {navigation.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-violet-500">
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                  
+                  { user ? (
+                    <div className="mt-6 px-20 gap-3">
+                      <div className="block text-center w-full py-3 px-4 rounded-md shadow bg-gradient-to-r">
+                        <Link href="/app/purchase-end" legacyBehavior>
+                          <a className="block text-center w-full py-3 px-4 rounded-md shadow bg-gradient-to-r from-violet-500 to-violet-600 text-white font-medium hover:from-violet-600 hover:to-violet-700">
+                              Minhas Compras
+                          </a>
+                        </Link>
+                      </div>
+                      <div className="text-center w-full">
+                        <Link href="/api/auth/logout" legacyBehavior>
+                         <a className="text-base font-medium text-white ml-1 hover:text-gray-300">Sair do app</a>
+                        </Link>
+                      </div>
+                    </div>
+                  ) : ( 
+                    <div className="mt-6 px-5">
+                      <p className="text-center text-base font-medium text-white">
+                        Existing customer?{' '}
+                        <Link href="/api/auth/login" legacyBehavior>
+                          <a  className="text-violet-900 hover:underline">
+                            Login
+                          </a>
+                        </Link>
+                      </p>
+                    </div>
+                  ) }  
               </div>
             </div>
-            <div className="pt-5 pb-6">
-              <div className="px-2 space-y-1">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-50">
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-              <div className="mt-6 px-5">
-                <a
-                  href="#"
-                  className="block text-center w-full py-3 px-4 rounded-md shadow bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-medium hover:from-teal-600 hover:to-cyan-700"
-                >
-                  Start free trial
-                </a>
-              </div>
-              <div className="mt-6 px-5">
-                <p className="text-center text-base font-medium text-gray-500">
-                  Existing customer?{' '}
-                  <a href="#" className="text-gray-900 hover:underline">
-                    Login
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </Popover.Panel>
+          </Popover.Panel>
       </Transition>
     </Popover>
+   
   );
 }

@@ -54,8 +54,8 @@ function Drinks({ data }: DrinksProps) {
                             <p className="font-medium text-indigo-600 truncate">{product.title}</p>
                             <p className="ml-1 flex-shrink-0 font-normal text-gray-500">Drinks</p>
                           </div>
-                          <div className="flex items-center text-sm text-gray-500">
-                            <p>
+                          <div className="flex items-center text-sm text-gray-500 w-9/12">
+                            <p className="whitespace-normal">
                               Descrição: {product.description}
                             </p>
                           </div>
