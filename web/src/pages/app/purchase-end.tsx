@@ -34,7 +34,7 @@ const dateFormatter = new Intl.DateTimeFormat('pt-BR', {
   year: 'numeric',
 })
 
-function Courses() {
+function PurchasesEnd() {
   const { data } = useMe()
 
   return <>
@@ -66,14 +66,19 @@ function Courses() {
                           <p className="ml-1 flex-shrink-0 font-normal text-gray-500">Drinks🥃</p>
                         </div>
                         <div className="mt-2 flex">
-                          <div className="flex items-center text-sm text-gray-500">
-                            <CalendarIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" aria-hidden="true" />
-                            <p>
-                              Compra adquirida em <time dateTime={purchaseEnd.createdAt}>
-                                {dateFormatter.format(new Date(purchaseEnd.createdAt))}
-                              </time>
-                            </p>
-                          </div>
+                          <ul>
+                            <div className='flex items-center text-sm text-gray-500'>
+                              <p>Descrição: {purchaseEnd.category.description}</p>
+                            </div>
+                            <div className="flex items-center text-sm text-gray-500 mt-2">
+                              <CalendarIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" aria-hidden="true" />
+                              <p>
+                                Compra adquirida em <time dateTime={purchaseEnd.createdAt}>
+                                  {dateFormatter.format(new Date(purchaseEnd.createdAt))}
+                                </time>
+                              </p>
+                            </div>
+                          </ul>
                         </div>
                       </div>
                       <div className="mt-4 flex-shrink-0 sm:mt-0 sm:ml-5">
@@ -90,9 +95,11 @@ function Courses() {
                       </div>
                     </div>
                     <div className="ml-5 flex-shrink-0">
-                      <a href="#" className="px-2 py-1 border border-transparent text-base font-medium rounded-md text-white">
-                        Assistir aulas
-                      </a>
+                      <Link href={`/app/purchase-end/${purchaseEnd.category.slug}`} legacyBehavior>
+                        <a className="px-2 py-1 border border-transparent text-base font-medium rounded-md text-white bg-violet-700">
+                          Visualizar Product
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </li>
@@ -110,4 +117,4 @@ export const getServerSideProps = withPageAuthRequired({
   returnTo: '/'
 })
 
-export default withApollo(Courses)
+export default withApollo(PurchasesEnd)
