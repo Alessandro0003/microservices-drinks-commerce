@@ -1,0 +1,14 @@
+query Me {
+    me {
+       purchaseEnd {
+            id
+            createdAt
+
+            category {
+                description
+                title
+                slug
+            }
+       }
+    }
+} 
