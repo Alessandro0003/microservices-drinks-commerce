@@ -5,9 +5,9 @@ import Link from 'next/link'
 import { useUser } from '@auth0/nextjs-auth0' 
 
 const navigation = [
-  { name: 'Drinks Alcoólico', href: '/drinks' },
-  { name: 'Drinks', href: '#' },
-  { name: 'Drinks & Preparo', href: '#' },
+  { name: 'Drinks Alcoólico', href: '/drinks-alcoholic' },
+  { name: 'Drinks', href: '/#drinks' },
+  { name: 'Drinks & Preparo', href: '#drinks-preparation' },
   { name: 'Sobre a empresa', href: '#' },
 ]
 

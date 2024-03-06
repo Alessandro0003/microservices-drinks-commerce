@@ -5,42 +5,55 @@ import { withApollo } from '../lib/withApollo'
 
 const advantages = [
   {
-    name: 'Suporte 1-1',
-    description: 'Tire dúvidas diretamente com nosso time de devs pronto para te salvar daquele bug inesperado.'
+    name: 'Whisky Red Label',
+    description: 'O Johnnie Walker Red Label é um whisky escocês blended suave e versátil, com notas frutadas, toques cítricos e leve complexidade de especiarias. Doçura sutil, toque de turfa, envelhecimento em carvalho, cor dourada. Embalagem com a etiqueta vermelha. Apreciado puro, com gelo ou em coquetéis.',
+    imageUrl: 'https://i.pinimg.com/564x/3f/75/f6/3f75f6e4560c1f32583a8d8d7ed3ecf5.jpg'
   },
+
   {
-    name: 'Certificado de aproveitamento',
-    description: 'Emita um certificado de conclusão que realmente mostre seu aproveitamento no curso.',
+    name: 'Whisky Jack Daniel´s',
+    description: 'O Jack Daniels, Tennessee whiskey de Lynchburg, EUA, é conhecido por sua suavidade e doçura, com notas de baunilha e caramelo, envelhecido em barris de carvalho. Destaca-se pelo Processo de Lincoln County, filtragem com carvão de bordo. Com teor alcoólico de 40-50% ABV, é apreciado puro, com gelo ou em coquetéis como o Jack and Coke, sendo internacionalmente reconhecido por amantes de uísque',
+    imageUrl: 'https://i.pinimg.com/564x/2b/ab/8e/2bab8e27d35da406770e322c621c291d.jpg'
   },
+
   {
-    name: 'Comunidade de alunos(as)',
-    description: 'Compartilhe sua jornada de aprendizado com milhares de outras pessoas no dia-a-dia com a comunidade exclusiva.',
+    name: 'Whisky Buchanans 12 anos',
+    description: 'Buchanans 12 anos é um whisky escocês single malt com uma maturação de 12 anos. Reconhecido por sua suavidade e complexidade, apresenta notas de frutas maduras, baunilha e um toque sutil de carvalho. A embalagem elegante destaca a marca Buchanans. Este whisky é apreciado pela sua qualidade e pode ser desfrutado puro ou com gelo, refletindo a tradição e maestria da destilaria.',
+    imageUrl: 'https://i.pinimg.com/564x/b1/5d/96/b15d964db6d694b876756a27a81984aa.jpg'
   },
+
   {
-    name: 'Desafios práticos',
-    description: 'Receba desafios do mundo-real para testar suas habilidades com cada técnica aprendida durante os cursos.',
+    name: 'Licor 43',
+    description: 'Licor 43 é uma bebida espanhola conhecida por sua doçura e versatilidade. Com 43 ingredientes secretos, incluindo frutas cítricas e especiarias, proporciona uma mistura única de sabores. Sua cor dourada e aroma aromático o tornam distintivo. Pode ser apreciado puro, com gelo ou como ingrediente em diversos coquetéis, destacando-se pela sua doçura equilibrada e perfil aromático.',
+    imageUrl: 'https://i.pinimg.com/564x/99/8d/1d/998d1d61a4b6310e3f0d022a8fddcb0e.jpg'
   },
+
   {
-    name: 'Recomendação ao mercado',
-    description: 'Receba recomendações de ótimas vagas para você iniciar sua carreira em programação ao final do curso.',
+    name: 'Whisky Chivas Regal 25 anos',
+    description: 'Chivas Regal 25 anos é um whisky escocês blended premium envelhecido por um quarto de século. Distinto pela rica suavidade, revela complexidade com notas de frutas maduras, mel, e toques de carvalho. Sua elegante garrafa e embalagem refletem a qualidade premium. Apreciado pela sofisticação, pode ser desfrutado puro, realçando a excelência de suas duas décadas e meia de maturação.',
+    imageUrl: 'https://i.pinimg.com/564x/fb/74/ae/fb74aee5db40843127425ab02b383580.jpg'
   },
+
   {
-    name: 'Acesso vitalício',
-    description: 'Não tenha pressa em estudar, receba acesso vitalício aos conteúdos dos cursos para estudar quando quiser.',
+    name: 'Whisky Passport Scotch',
+    description: 'Passport Scotch é um whisky escocês blended, conhecido por sua abordagem acessível e sabor equilibrado. Com uma mistura de maltes e grãos, apresenta notas suaves de frutas, toques de especiarias e um final leve. Sua versatilidade o torna ideal para ser apreciado puro, com gelo ou em coquetéis. Uma escolha acessível para os apreciadores que buscam um whisky escocês de qualidade.',
+    imageUrl: 'https://i.pinimg.com/564x/22/ce/d0/22ced01cff7958fd8559f7418ac30afc.jpg'
   },
+
 ]
 const blogPostsDrinks = [
   {
     id: 1,
-    title: 'Como criar um cronograma de estudos utilizando Notion',
+    title: 'Como fazer Caipirinha de Kiwi com saquê?',
     href: '#',
     date: 'Mar 16, 2020',
     datetime: '2020-03-16',
-    category: { name: 'Article', href: '#' },
+    category: { name: 'Drinks & Preparo', href: '#' },
     imageUrl:
-      'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
-    preview:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.',
+      'https://i.pinimg.com/564x/0c/0c/d9/0c0cd9369499b4d2983d9320b50ebc4d.jpg',
+    preview:[
+      'Ingredientes:', '• 2 kiwis sem casca', '• 60 ml de saquê', '• Açúcar a gosto (cerca de 4 colheres)', '• Cubos de gelo a gosto'
+    ], 
     author: {
       name: 'Roel Aufderehar',
       imageUrl:
@@ -51,15 +64,16 @@ const blogPostsDrinks = [
   },
   {
     id: 2,
-    title: 'Qual a diferença de um ambiente confortável na hora de programar?',
+    title: 'Como fazer uma batidinha de abacaxi?',
     href: '#',
     date: 'Mar 10, 2020',
     datetime: '2020-03-10',
-    category: { name: 'Video', href: '#' },
+    category: { name: 'Drinks & Preparo', href: '#' },
     imageUrl:
-      'https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
-    preview:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.',
+      'https://i.pinimg.com/564x/41/77/cc/4177cc0af160c16d6d8afafebabd3899.jpg',
+    preview:[
+      'Ingredientes:', '• 60ml de cachaça', '• 1 rodela de abacaxi', '• açúcar a gosto', '• 1 ramo de hortelã', '• 4 pedras de gelo'
+    ],
     author: {
       name: 'Brenna Goyette',
       imageUrl:
@@ -76,9 +90,10 @@ const blogPostsDrinks = [
     datetime: '2020-02-12',
     category: { name: 'Case Study', href: '#' },
     imageUrl:
-      'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
-    preview:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.',
+      'https://i.pinimg.com/564x/f0/34/60/f03460252e4f72b4f9de3c5731ae19ab.jpg',
+      preview:[
+        'Ingredientes:', ' • ½ xícara (chá) de cachaça (ou 2 doses)', '• 1 Maracujá', '• 3 Colheres (sopa) de açúcar', '• 1 Carambola', '• 4 pedras de gelo'
+      ],
     author: {
       name: 'Daniela Metz',
       imageUrl:
@@ -150,12 +165,12 @@ function Home() {
                         <div className="flow-root bg-gray-50 rounded-lg px-6 pb-8">
                           <div className="-mt-6">
                             <div>
-                              <span className="inline-flex items-center justify-center p-3 bg-gradient-to-r from-teal-500 to-cyan-600 rounded-md shadow-lg">
-                                <img src="https://i.pinimg.com/564x/4e/72/bd/4e72bddba1b285ad402cdf7e12f9d20c.jpg" alt="" />
+                              <span className="inline-flex items-center justify-center p-3 bg-gradient-to-r from-black to-zinc-950 rounded-md shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                                <img className="h-[320px] w-full object-cover" src={advantage.imageUrl} alt="" />
                               </span>
                             </div>
                             <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">{advantage.name}</h3>
-                            <p className="mt-5 text-base text-gray-500">{advantage.description}</p>
+                            <p className="mt-5 text-base text-gray-500 mx-auto text-center">{advantage.description}</p>
                           </div>
                         </div>
                       </div>
@@ -218,8 +233,8 @@ function Home() {
                 <div className="mt-12 mx-auto max-w-md px-4 grid gap-8 sm:max-w-lg sm:px-6 lg:px-8 lg:grid-cols-3 lg:max-w-7xl">
                   {blogPostsDrinks.map((post) => (
                     <div key={post.id} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
-                      <div className="flex-shrink-0">
-                        <img className="h-48 w-full object-cover" src={post.imageUrl} alt="" />
+                      <div className="flex-shrink-0 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                        <img className="h-[320px] w-full object-cover" src={post.imageUrl} alt="" />
                       </div>
                       <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                         <div className="flex-1">
@@ -230,7 +245,13 @@ function Home() {
                           </p>
                           <a href={post.href} className="block mt-2">
                             <p className="text-xl font-semibold text-gray-900">{post.title}</p>
-                            <p className="mt-3 text-base text-gray-500">{post.preview}</p>
+                            <ul className=" mt-3 text-base text-gray-500">
+                              <li>{post.preview[0]}</li>
+                              <li>{post.preview[1]}</li>
+                              <li>{post.preview[2]}</li>
+                              <li>{post.preview[3]}</li>
+                              <li>{post.preview[4]}</li>
+                            </ul>
                           </a>
                         </div>
                         <div className="mt-6 flex items-center">
